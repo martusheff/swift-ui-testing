@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var viewModel: AppViewModel
+
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            if viewModel.signedIn {
+                SignedInView()
+            } else {
+                SignInView()
+            }
+        }
+
+        .onAppear {
+            viewModel.signedIn = viewModel.signedIn
+        }
+
     }
 }
 
