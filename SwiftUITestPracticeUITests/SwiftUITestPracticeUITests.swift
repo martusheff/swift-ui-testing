@@ -24,6 +24,8 @@ class SwiftUITestPracticeUITests: XCTestCase {
 
     func testValidLoginSuccess() {
         
+        XCUIApplication().launch()
+        
         let validUsername = "sadsack"
         let validPassword = "1234567"
 
@@ -31,7 +33,7 @@ class SwiftUITestPracticeUITests: XCTestCase {
         
         let usernameTextField = app.textFields["username..."]
         
-        //XCTAssertFalse(usernameTextField.exists)
+        //XCTAssertTrue(usernameTextField.exists)
         
         usernameTextField.tap()
         usernameTextField.typeText(validUsername)
@@ -42,8 +44,12 @@ class SwiftUITestPracticeUITests: XCTestCase {
         passwordTextField.tap()
         passwordTextField.typeText(validPassword)
         
-        app.buttons["Sign In"].tap()
         
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        
+        let signInButton = app.buttons["Sign In"]
+        signInButton.tap()
         
       
         let signOutButton = app.buttons["Sign Out"]

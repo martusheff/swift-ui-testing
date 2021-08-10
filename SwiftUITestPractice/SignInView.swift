@@ -37,6 +37,7 @@ struct SignInView: View {
                 .cornerRadius(10)
                 .multilineTextAlignment(.center)
                 .autocapitalization(.none)
+                
             
             
             Text("Password")
