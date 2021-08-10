@@ -40,6 +40,7 @@ class SwiftUITestPracticeUITests: XCTestCase {
         
         usernameTextField.tap()
         usernameTextField.typeText(validUsername)
+        app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         
     
         let passwordTextField = app.textFields["password..."]
@@ -70,10 +71,13 @@ class SwiftUITestPracticeUITests: XCTestCase {
         XCUIApplication().launch()
         
         let app = XCUIApplication()
+        
         let usernameField = app.textFields["username..."]
+        usernameField.tap()
         usernameField.typeText("username")
         
         let passwordField = app.textFields["password..."]
+        passwordField.tap()
         passwordField.typeText("password")
         
         let collapseKeyboard = app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
@@ -85,7 +89,7 @@ class SwiftUITestPracticeUITests: XCTestCase {
         signInButton.tap()
         
         expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: signInButton, handler: nil)
-        
+        waitForExpectations(timeout: 5, handler: nil)
         XCTAssertTrue(signInButton.exists)
         
     }
