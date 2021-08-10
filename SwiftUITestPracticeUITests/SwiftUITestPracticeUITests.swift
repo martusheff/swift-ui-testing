@@ -11,9 +11,12 @@ class SwiftUITestPracticeUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
+        
+        
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -60,6 +63,31 @@ class SwiftUITestPracticeUITests: XCTestCase {
         XCTAssertTrue(signOutButton.exists)
                 
                         
+    }
+    
+    func testInavlidLogin() {
+        
+        XCUIApplication().launch()
+        
+        let app = XCUIApplication()
+        let usernameField = app.textFields["username..."]
+        usernameField.typeText("username")
+        
+        let passwordField = app.textFields["password..."]
+        passwordField.typeText("password")
+        
+        let collapseKeyboard = app/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
+        collapseKeyboard.tap()
+        
+        
+        
+        let signInButton = app.buttons["Sign In"]
+        signInButton.tap()
+        
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: signInButton, handler: nil)
+        
+        XCTAssertTrue(signInButton.exists)
+        
     }
 
     func testLaunchPerformance() throws {
