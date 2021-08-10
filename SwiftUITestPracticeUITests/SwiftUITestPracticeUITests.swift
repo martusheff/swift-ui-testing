@@ -22,13 +22,38 @@ class SwiftUITestPracticeUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testValidLoginSuccess() {
+        
+        let validUsername = "sadsack"
+        let validPassword = "1234567"
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        
+        let usernameTextField = app.textFields["username..."]
+        
+        //XCTAssertFalse(usernameTextField.exists)
+        
+        usernameTextField.tap()
+        usernameTextField.typeText(validUsername)
+        
+    
+        let passwordTextField = app.textFields["password..."]
+        //XCTAssertTrue(passwordTextField.exists)
+        passwordTextField.tap()
+        passwordTextField.typeText(validPassword)
+        
+        app.buttons["Sign In"].tap()
+        
+        
+      
+        let signOutButton = app.buttons["Sign Out"]
+        
+        
+        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: signOutButton, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(signOutButton.exists)
+                
+                        
     }
 
     func testLaunchPerformance() throws {

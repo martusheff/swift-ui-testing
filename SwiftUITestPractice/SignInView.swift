@@ -28,7 +28,7 @@ struct SignInView: View {
             
             Text("Username")
                 
-            TextField("", text: $enteredUser)
+            TextField("username...", text: $enteredUser)
                 .frame(width: 200, height: 0)
                 .padding()
                 .background(Color.gray)
@@ -41,7 +41,7 @@ struct SignInView: View {
             
             Text("Password")
                 
-            TextField("", text: $enteredPw)
+            TextField("password...", text: $enteredPw)
                 .frame(width: 200, height: 0)
                 .padding()
                 .background(Color.gray)
